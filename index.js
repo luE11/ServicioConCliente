@@ -3,6 +3,9 @@ const cors = require('cors')
 const data = require('./data/plantas.json')
 const app = express()
 const port = 3000
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors())
 
@@ -18,14 +21,16 @@ app.get('/plantas', (req, res) =>{
  * Otros usos /plantas:nombre -> en la url -> /plantas/orquidea solo para filtros
  * usando body... se cargan datos en body desde cliente, y se reciben en server con req.body
  */
-app.put('/plantas', (req, res) =>{
-    var nombre = req.query.nombre
-    var edad = req.query.edad  
+app.post('/plantas', (req, res) =>{
+    var nombre = req.body.nombre
+    var edad = req.body.edad  
+    console.log(req.body)
     if(nombre && edad){
-        var nPlanta = new Planta(data.plantas.length+1, nombre, edad);
-        savePlant(nPlanta)
+        var nPlanta = new Planta(data.plantas.length+1, nombre, edad)
         res.send('planta registrada :)')
+        savePlant(nPlanta)
     }else{
+        console.log("No hay suficientes datos")
         res.send('parametros insuficientes')
     }
 })

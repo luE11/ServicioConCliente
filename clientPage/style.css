@@ -1,0 +1,7 @@
+#register, #register th, #register td{
+    border: 1px solid #cdcdcd;
+}
+#register th, #register td{
+    padding: 5px;
+    text-align: left;
+}
