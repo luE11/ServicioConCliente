@@ -7,26 +7,37 @@ const port = 3000
 app.use(cors())
 
 app.get('/plantas', (req, res) =>{
-
+    if(data.plantas.length>0){
+        res.send(data.plantas)
+    }else{
+        res.send('No hay plantas registradas :(')
+    }
 })
 
 /**
- * usando 
+ * Otros usos /plantas:nombre -> en la url -> /plantas/orquidea solo para filtros
+ * usando body... se cargan datos en body desde cliente, y se reciben en server con req.body
  */
 app.put('/plantas', (req, res) =>{
     var nombre = req.query.nombre
     var edad = req.query.edad  
-    var nPlanta = new Planta(data.plantas.length+1, nombre, edad);
-    savePlant(nPlanta)
-    res.send('planta registrada :)')
+    if(nombre && edad){
+        var nPlanta = new Planta(data.plantas.length+1, nombre, edad);
+        savePlant(nPlanta)
+        res.send('planta registrada :)')
+    }else{
+        res.send('parametros insuficientes')
+    }
 })
 
-app.delete('/nombre', (req, res) =>{
-    if(!name){
-        res.send('No hay un nombre asignado')
+app.delete('/plantas', (req, res) =>{
+    if(data.plantas.length>0){
+        var fs = require('fs')
+        var content = '{"plantas":[]}'
+        fs.writeFile('./data/plantas.json', content, 'utf8', function(err){})
+        res.send('Lista de plantas eliminada')
     }else{
-        name = ''
-        res.send('Nombre eliminado')
+        res.send('No hay plantas registradas')
     }
 })
 
