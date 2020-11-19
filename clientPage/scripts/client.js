@@ -41,9 +41,9 @@ $( document ).ready(function() {
                 function(datos){
                     $('#register').empty()
                     if(Array.isArray(datos)){
-                        var data = '<tr><td> Nombre </td><td> Edad </td></tr>';
+                        var data = '<tr><td> Id </td><td> Nombre </td><td> Edad </td></tr>';
                         for (let i = 0; i < datos.length; i++) {
-                            data+='<tr><td>' + datos[i].nombre + '</td><td>' + datos[i].edad + '</td></tr>';                      
+                            data+='<tr><td>' + datos[i].id + '</td><td>' + datos[i].nombre + '</td><td>' + datos[i].edad + '</td></tr>';                      
                         }
                         $('#register').append(data); 
                     }else{

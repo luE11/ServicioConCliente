@@ -1,7 +1,77 @@
+*{
+    background: #fbfffc;
+    padding: 10px 10px;
+}
+
+body{
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    color: rgb(2, 75, 0);
+}
+
+h3{
+    font-size: 25px;
+}
+
+#form{
+    text-align: center;
+    width: 50%;
+    background: rgb(211, 210, 210);
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+
+#form table{
+    width: 100%;
+    margin: 0 auto;
+    background: rgb(211, 210, 210);
+}
+
+#form h3, #form td{
+    color: darkslateblue;
+    font-size: 25px;
+    background: rgb(211, 210, 210);
+}
+
+#form input{
+    width: 80%;
+    text-align: center;
+}
+
+.boton{
+    background: deepskyblue;
+    font-size: 25px;
+    color: white;
+}
+
+.boton:hover{
+    background: white;
+    color: deepskyblue;
+    transition-duration: 1s;
+}
+
+#tabla{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#register{
+    width: 100%;
+    margin: 0 auto;
+}
+
 #register, #register th, #register td{
     border: 1px solid #cdcdcd;
 }
 #register th, #register td{
     padding: 5px;
     text-align: left;
+}
+
+#btnShow{
+    margin-top: 20px;
 }

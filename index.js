@@ -1,6 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-const data = require('./data/plantas.json')
 const app = express()
 const port = 3000
 var bodyParser = require('body-parser');
@@ -10,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
 app.get('/plantas', (req, res) =>{
+    var data = require('./data/plantas.json')
     if(data.plantas.length>0){
         res.send(data.plantas)
     }else{
@@ -26,6 +26,7 @@ app.post('/plantas', (req, res) =>{
     var edad = req.body.edad  
     console.log(req.body)
     if(nombre && edad){
+        var data = require('./data/plantas.json')
         var nPlanta = new Planta(data.plantas.length+1, nombre, edad)
         res.send('planta registrada :)')
         savePlant(nPlanta)
@@ -36,6 +37,7 @@ app.post('/plantas', (req, res) =>{
 })
 
 app.delete('/plantas', (req, res) =>{
+    var data = require('./data/plantas.json')
     if(data.plantas.length>0){
         var fs = require('fs')
         var content = '{"plantas":[]}'
